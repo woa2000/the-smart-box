@@ -29,16 +29,16 @@ export default function RootLayout({
             {/* Sidebar */}
             <aside className="w-64 bg-background border-r border-border flex flex-col py-6 px-4 min-h-screen fixed z-20 hidden md:flex">
               <div className="mb-8 flex items-center gap-2">
-                <span className="text-xl font-bold text-primary">Smart Box</span>
+                <span className="text-xl font-bold text-primary">The Smart Box</span>
               </div>
               <nav className="flex flex-col gap-2">
-                <a href="/dashboard" className="flex items-center gap-2 px-3 py-2 rounded-md hover:bg-muted transition-colors font-medium text-sm text-foreground">
+                <a href="/dashboard" className="flex items-center gap-2 px-3 py-2 rounded-md font-semibold text-base text-primary hover:bg-muted hover:scale-105 transition-all duration-150">
                   <Icons.dashboard className="w-5 h-5 text-primary" />
-                  Dashboard
+                  <span className="text-primary">Dashboard</span>
                 </a>
-                <a href="/" className="flex items-center gap-2 px-3 py-2 rounded-md hover:bg-muted transition-colors font-medium text-sm text-foreground">
+                <a href="/" className="flex items-center gap-2 px-3 py-2 rounded-md font-semibold text-base text-primary hover:bg-muted hover:scale-105 transition-all duration-150">
                   <Icons.inventory className="w-5 h-5 text-primary" />
-                  Inventário
+                  <span className="text-primary">Inventário</span>
                 </a>
                 {/* Adicione mais links conforme necessário */}
               </nav>
