@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 20 14% 4%;
+    --card: 0 0% 100%;
+    --card-foreground: 20 14% 4%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 20 14% 4%;
+    --primary: 35 70% 61%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 220 14% 90%;
+    --secondary-foreground: 20 14% 4%;
+    --muted: 220 14% 95%;
+    --muted-foreground: 220 14% 40%;
+    --accent: 220 14% 95%;
+    --accent-foreground: 20 14% 4%;
+    --destructive: 0 85% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 35 70% 61%;
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 20 14% 4%;
+    --foreground: 0 0% 100%;
+    --card: 20 14% 4%;
+    --card-foreground: 0 0% 100%;
+    --popover: 20 14% 4%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 35 70% 61%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 220 14% 10%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 220 14% 10%;
+    --muted-foreground: 220 14% 60%;
+    --accent: 220 14% 10%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 85% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 220 14% 10%;
+    --input: 220 14% 10%;
+    --ring: 35 70% 61%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+.hero-pattern {
+  background-color: hsl(35, 70%, 61%);
+  background-image: url("data:image/svg+xml,%3Csvg width='52' height='26' viewBox='0 0 52 26' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M10 10c0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6h2c0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4v2c-3.314 0-6-2.686-6-6 0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6zm25.464-1.95l8.486 8.486-1.414 1.414-8.486-8.486 1.414-1.414z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
