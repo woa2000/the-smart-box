@@ -28,8 +28,23 @@ const formSchema = z.object({
 export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
   const router = useRouter();
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
+  const [isError, setIsError] = React.useState<string | null>(null);
   const { toast } = useToast();
-  const supabase = createClientComponentClient();
+
+  // Create Supabase client with proper type
+  const supabase = React.useMemo(() => {
+    try {
+      return createClientComponentClient();
+    } catch (error) {
+      console.error("Failed to initialize Supabase client:", error);
+      toast({
+        title: "Error initializing authentication",
+        description: "Check your environment configuration or contact support.",
+        variant: "destructive",
+      });
+      return null;
+    }
+  }, [toast]);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -41,8 +56,15 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsLoading(true);
+    setIsError(null);
 
     try {
+      if (!supabase) {
+        throw new Error(
+          "Supabase client not initialized. Check your environment variables."
+        );
+      }
+
       const { data, error } = await supabase.auth.signInWithPassword({
         email: values.email,
         password: values.password,
@@ -52,12 +74,15 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
         throw error;
       }
 
-      router.push("/");
+      router.push("/dashboard");
       router.refresh();
-    } catch (error) {
+    } catch (error: any) {
+      console.error("Authentication error:", error);
+      setIsError(error.message);
       toast({
         title: "Erro ao fazer login",
-        description: "Verifique suas credenciais e tente novamente.",
+        description:
+          error.message || "Verifique suas credenciais e tente novamente.",
         variant: "destructive",
       });
     } finally {
